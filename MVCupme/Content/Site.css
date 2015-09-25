@@ -166,7 +166,7 @@ textarea {
 }
 #carousel-panel-generic{
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 5px;
     z-index: 1;
 }
@@ -434,8 +434,8 @@ label {
 }
 #BtnMonstrarConven{
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    bottom: 0px;
+    right: 0px;
     background: rgba(255, 255, 255, 0.1);
     z-index: 1001;
 }
@@ -486,9 +486,8 @@ label {
     color: rgba(14, 85, 177, 0.98);
 
 }
-
 #ListaCiudad{
-    max-height:150px;
+    max-height:100px;
     overflow:scroll;
 }
 #ListaCiudad .active {
@@ -499,11 +498,20 @@ label {
 }
 
 
-
-#BtnOcultarEstudios {
+#BtnOcultarEstudiosspan {
     position: absolute; 
     top:48%;
-    right:0px;
+    right:10px;    
+    
+}
+
+#BtnOcultarEstudios, .btn-xs, .btn-group-xs>.btn {
+    padding: 5px 2px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    height: 50px;
+    width: 14px;
 }
 
 .displayed {
@@ -527,4 +535,13 @@ label {
 
 .navbar-inverse .navbar-nav > li > h5 > small {
     color:#002452;
+}
+
+
+#tituloEstudio, .text-info {
+    color: #04405F;
+}
+
+.mouse-position>.panel-body {
+    padding: 1px;
 }

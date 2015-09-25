@@ -94,6 +94,8 @@ function clearBusqueda() {
     $('#searchCiudad').val('');
     $('#ListaCiudad .clearfix').removeClass('active');
     $('#searchCiudad').focus();
+var e = jQuery.Event("change");
+    $('#searchCiudad').trigger(e);
 }
 $("#BtnBusquedaLimpiar").click(function (event) {
     clearBusqueda();

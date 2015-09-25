@@ -180,13 +180,13 @@ function getDeptoSimp() {
             url: config.dominio + config.urlHostDataMA + 'MapServer/' + config.ep_demandas
         }).fields(['FK_ID_ESTUDIO']).where("1=1").returnGeometry(false).orderBy('FK_ID_ESTUDIO');
         queryDemandaDist.params.returnDistinctValues = true;
-        queryDemandaDist.run(function (error, jsonEstudios) {
-            
-            
-            $.each(jsonEstudios.features.reverse(), function (index, value) {
+        queryOfertaDist.run(function (error, jsonEstudios) {
+
+            $.each(jsonEstudios.features, function (index, value) {
+                //console.log(glo.arrayHtmlEst[value.properties.FK_ID_ESTUDIO]);
                 $("#ListaEstudios .chat").prepend(glo.arrayHtmlEst[value.properties.FK_ID_ESTUDIO]);
-            });            
-            
+            });
+
             $('#ListaEstudios').searchable({
                 searchField: '#searchEstudio',
                 selector: 'li',
@@ -198,13 +198,11 @@ function getDeptoSimp() {
                     elem.slideUp(100);
                 }
             });
-            
-            styleEstudio(jsonEstudios.features[jsonEstudios.features.length - 1].properties.FK_ID_ESTUDIO);
-           
+
+            styleEstudio(glo.idEstudioIni);
             CargaOfertaDemanda();
         });
     });
-}
     var queryDeptSimpli = L.esri.Tasks.query({
         url: config.dominio + config.urlHostDataMA + 'MapServer/' + config.DPTO_GEN
     });
@@ -213,9 +211,19 @@ function getDeptoSimp() {
            .orderBy(['CODIGO_DEP']);
     queryDeptSimpli.where("1=1").run(function (error, geojson) {
         glo.jsonDto = geojson;
-        
+
     });
+}
+
   
+
+    $('#limpiarBusquedaEstudios').click(function () {
+        $('#searchEstudio').focus().val('');
+
+        var e = jQuery.Event("change");
+        $('#searchEstudio').trigger(e);
+
+    });
 
 
 
