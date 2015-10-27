@@ -180,7 +180,7 @@ function getDeptoSimp() {
             url: config.dominio + config.urlHostDataMA + 'MapServer/' + config.ep_demandas
         }).fields(['FK_ID_ESTUDIO']).where("1=1").returnGeometry(false).orderBy('FK_ID_ESTUDIO');
         queryDemandaDist.params.returnDistinctValues = true;
-        queryOfertaDist.run(function (error, jsonEstudios) {
+        queryDemandaDist.run(function (error, jsonEstudios) {
 
             $.each(jsonEstudios.features, function (index, value) {
                 //console.log(glo.arrayHtmlEst[value.properties.FK_ID_ESTUDIO]);
