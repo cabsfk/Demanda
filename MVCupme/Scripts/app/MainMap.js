@@ -30,7 +30,9 @@ function selecEstudiochange() {
         legend.removeFrom(map);
     }
     glo.Anio = 0;
+    waitingDialog.show();
     CargaOfertaDemanda();
+    
 };
 
 
@@ -326,7 +328,7 @@ function addDemanda(filterDemanda) {
     });
 
     glo.lyrOferta.addTo(map).bringToBack();
-
+    waitingDialog.hide();
     if (map.hasLayer(glo.lyrBaseMunDpto)) {
         glo.lyrBaseMunDpto.bringToBack();
     }

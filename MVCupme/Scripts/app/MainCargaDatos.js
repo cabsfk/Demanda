@@ -75,6 +75,7 @@ function VerLegend() {
     glo.addlegend = true;
     legend.addTo(map);
     $("#UniOferta").empty().append('[' + glo.UniMate + ']');
+    waitingDialog.hide();
 }
 
 function getUniMate(idUni) {
@@ -116,14 +117,15 @@ function dataanio(geojson) {
 }
 
 function CargaOfertaDemanda() {
-    waitingDialog.show();
+
+    console.log('Ingresa a la carga');
     clearBusqueda();
     var Estudio = $("#selecEstudio").val();
         var queryDemanda = L.esri.Tasks.query({
             url: config.dominio + config.urlHostDataMA + 'MapServer/' + config.ep_demandas
         });
         queryDemanda.where("1='1' and FK_ID_ESTUDIO=" + Estudio).returnGeometry(false).run(function (error, fCDemanda) {
-            console.log(fCDemanda);
+            waitingDialog.hide();
             $('#infoOferta').empty();
             if (fCDemanda.features.length > 0) {
                 var i = 0, estudio = [];
@@ -156,7 +158,7 @@ function CargaOfertaDemanda() {
                 addDemanda(filterDemanda);
                 VerLegend();
                 $('#LegendDemanda').hide();
-                
+                waitingDialog.hide();
             } 
            
         });
